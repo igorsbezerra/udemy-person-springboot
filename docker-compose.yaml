@@ -1,0 +1,12 @@
+version: "3.1"
+
+services:
+  db:
+    image: mysql
+    container_name: mysql_udemy
+    tty: true
+    environment:
+      - MYSQL_DATABASE=person
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - "3306:3306"
