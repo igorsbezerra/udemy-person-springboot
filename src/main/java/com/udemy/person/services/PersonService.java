@@ -1,5 +1,7 @@
 package com.udemy.person.services;
 
+import com.udemy.person.adapter.DozerAdapter;
+import com.udemy.person.data.vo.PersonVO;
 import com.udemy.person.exception.NotFoundException;
 import com.udemy.person.data.model.Person;
 import com.udemy.person.repository.PersonRepository;
@@ -14,26 +16,29 @@ public class PersonService {
     @Autowired
     PersonRepository personRepository;
 
-    public Person create(Person person) {
-        return personRepository.save(person);
+    public PersonVO create(PersonVO person) {
+        var entity = DozerAdapter.parseObject(person, Person.class);
+        return DozerAdapter.parseObject(personRepository.save(entity), PersonVO.class);
     }
 
-    public Person findById(Long id) {
-        return personRepository.findById(id).orElseThrow(() -> new NotFoundException("Person not found for ID " + id));
+    public PersonVO findById(Long id) {
+        var entity = personRepository.findById(id).orElseThrow(() -> new NotFoundException("Person not found for ID " + id));
+        return DozerAdapter.parseObject(entity, PersonVO.class);
     }
 
-    public List<Person> findAll() {
-        return personRepository.findAll();
+    public List<PersonVO> findAll() {
+        return DozerAdapter.parseListObjects(personRepository.findAll(), PersonVO.class);
     }
 
-    public Person update(Long id, Person person) {
+    public PersonVO update(Long id, PersonVO person) {
         findById(id);
         person.setId(id);
-        return personRepository.save(person);
+        personRepository.save(DozerAdapter.parseObject(person, Person.class));
+        return DozerAdapter.parseObject(person, PersonVO.class);
     }
 
     public void delete(Long id) {
-        Person person = findById(id);
-        personRepository.delete(person);
+        findById(id);
+        personRepository.deleteById(id);
     }
 }
