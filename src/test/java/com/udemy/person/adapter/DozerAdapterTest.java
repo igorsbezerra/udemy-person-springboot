@@ -6,6 +6,9 @@ import com.udemy.person.data.vo.PersonVO;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
@@ -13,19 +16,16 @@ import java.util.List;
 @SpringBootTest
 public class DozerAdapterTest {
 
+    @Autowired
     MockPerson inputObject;
-
-    @Before
-    public void setUp() {
-        inputObject = new MockPerson();
-    }
 
     @Test
     public void parseEntityToVOTest() {
         PersonVO output = DozerAdapter.parseObject(inputObject.mockEntity(), PersonVO.class);
+
         Assert.assertEquals(Long.valueOf(0L), output.getId());
-        Assert.assertEquals("Last name 0", output.getFirstName());
-        Assert.assertEquals("", output.getLastName());
+        Assert.assertEquals("First name 0", output.getFirstName());
+        Assert.assertEquals("Last name 0", output.getLastName());
         Assert.assertEquals("Address test 0", output.getAddress());
         Assert.assertEquals("Male", output.getGender());
     }
@@ -36,8 +36,8 @@ public class DozerAdapterTest {
         PersonVO outpuZero = outputList.get(0);
 
         Assert.assertEquals(Long.valueOf(0L), outpuZero.getId());
-        Assert.assertEquals("Last name 0", outpuZero.getFirstName());
-        Assert.assertEquals("", outpuZero.getLastName());
+        Assert.assertEquals("First name 0", outpuZero.getFirstName());
+        Assert.assertEquals("Last name 0", outpuZero.getLastName());
         Assert.assertEquals("Address test 0", outpuZero.getAddress());
         Assert.assertEquals("Male", outpuZero.getGender());
     }
@@ -45,9 +45,10 @@ public class DozerAdapterTest {
     @Test
     public void parseVOToEntityTest() {
         Person output = DozerAdapter.parseObject(inputObject.mockVO(), Person.class);
+
         Assert.assertEquals(Long.valueOf(0L), output.getId());
-        Assert.assertEquals("Last name 0", output.getFirstName());
-        Assert.assertEquals("", output.getLastName());
+        Assert.assertEquals("First name 0", output.getFirstName());
+        Assert.assertEquals("Last name 0", output.getLastName());
         Assert.assertEquals("Address test 0", output.getAddress());
         Assert.assertEquals("Male", output.getGender());
     }
@@ -58,8 +59,8 @@ public class DozerAdapterTest {
         Person outpuZero = outputList.get(0);
 
         Assert.assertEquals(Long.valueOf(0L), outpuZero.getId());
-        Assert.assertEquals("Last name 0", outpuZero.getFirstName());
-        Assert.assertEquals("", outpuZero.getLastName());
+        Assert.assertEquals("First name 0", outpuZero.getFirstName());
+        Assert.assertEquals("Last name 0", outpuZero.getLastName());
         Assert.assertEquals("Address test 0", outpuZero.getAddress());
         Assert.assertEquals("Male", outpuZero.getGender());
     }

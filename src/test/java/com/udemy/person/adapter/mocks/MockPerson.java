@@ -2,10 +2,12 @@ package com.udemy.person.adapter.mocks;
 
 import com.udemy.person.data.model.Person;
 import com.udemy.person.data.vo.PersonVO;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class MockPerson {
     public Person mockEntity() {
         return mockEntity(0);
