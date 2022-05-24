@@ -30,10 +30,10 @@ public class PersonService {
         return DozerAdapter.parseListObjects(personRepository.findAll(), PersonVO.class);
     }
 
-    public PersonVO update(Long id, PersonVO person) {
+    public PersonVO update(Long id, PersonVO personVO) {
         findById(id);
-        person.setId(id);
-        personRepository.save(DozerAdapter.parseObject(person, Person.class));
+        personVO.setId(id);
+        var person = personRepository.save(DozerAdapter.parseObject(personVO, Person.class));
         return DozerAdapter.parseObject(person, PersonVO.class);
     }
 
