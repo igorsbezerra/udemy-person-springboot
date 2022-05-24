@@ -1,7 +1,5 @@
 package com.udemy.person.controller;
 
-import com.udemy.person.adapter.DozerAdapter;
-import com.udemy.person.data.model.Person;
 import com.udemy.person.data.vo.PersonVO;
 import com.udemy.person.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;

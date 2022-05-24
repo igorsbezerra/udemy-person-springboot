@@ -1,13 +1,11 @@
 package com.udemy.person.adapter;
 
+import com.udemy.person.adapter.mapper.DozerAdapter;
 import com.udemy.person.adapter.mocks.MockPerson;
 import com.udemy.person.data.model.Person;
 import com.udemy.person.data.vo.PersonVO;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 

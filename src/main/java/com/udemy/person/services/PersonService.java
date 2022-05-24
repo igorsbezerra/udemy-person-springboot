@@ -1,6 +1,6 @@
 package com.udemy.person.services;
 
-import com.udemy.person.adapter.DozerAdapter;
+import com.udemy.person.adapter.mapper.DozerAdapter;
 import com.udemy.person.data.vo.PersonVO;
 import com.udemy.person.exception.NotFoundException;
 import com.udemy.person.data.model.Person;

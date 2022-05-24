@@ -1,4 +1,4 @@
-package com.udemy.person.adapter;
+package com.udemy.person.adapter.mapper;
 
 import com.github.dozermapper.core.DozerBeanMapperBuilder;
 import com.github.dozermapper.core.Mapper;
